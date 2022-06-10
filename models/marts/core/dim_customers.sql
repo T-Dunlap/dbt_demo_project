@@ -31,7 +31,7 @@ final as (
         customer.phone_number,
         customer.account_balance,
         customer.market_segment,
-        null as null_test
+        null as null_tests
     from
         customer
         inner join nation
