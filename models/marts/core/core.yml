@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: dim_customers
-    description: Customer dimensions table
+    description: Customer dimensions table. This has info about our customers. 
     columns:
       - name: customer_key
         description: Primary key on the customers table
@@ -13,7 +13,7 @@ models:
         description: region name
         tests:
           - accepted_values:
-              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
+              values: ['AFRICA'] #,'MIDDLE EAST','ASIA','EUROPE','AMERICA']
               severity: warn
       - name: name
         description: customer id
