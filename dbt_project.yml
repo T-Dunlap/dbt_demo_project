@@ -50,10 +50,14 @@ models:
   tpch:
     staging:
       +materialized: view
+      +schema: stg
 
     marts:
       core:
         materialized: table
+        +schema: core
+      intermediate:
+        +schema: intermed
   
   snowflake_spend:
     enabled: true
