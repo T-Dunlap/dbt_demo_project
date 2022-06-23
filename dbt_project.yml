@@ -54,7 +54,8 @@ models:
 
     marts:
       core:
-        materialized: table
+        +required_tests: {"unique.*|not_null": 1}      
+        +materialized: table
         +schema: core
       intermediate:
         +schema: intermed
