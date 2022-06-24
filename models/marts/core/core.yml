@@ -7,7 +7,7 @@ models:
       - name: customer_key
         description: Primary key on the customers table
         tests:
-#          - unique
+          - unique
           - not_null
       - name: region
         description: region name
