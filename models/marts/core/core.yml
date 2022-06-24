@@ -6,9 +6,9 @@ models:
     columns:
       - name: customer_key
         description: Primary key on the customers table
-#        tests:
-#          - unique
-#          - not_null
+        tests:
+          - unique
+          - not_null
       - name: region
         description: region name
         tests:
