@@ -1,3 +1,4 @@
+{#
 {% snapshot mock_orders %}
 
 {% set new_schema = target.schema + '_snapshot' %}
@@ -34,6 +35,7 @@ select * from tdunlap_sandbox_dev.{{target.schema}}.mock_orders
 --       (3, 'delivered', '2020-01-03', '2020-01-05'),
 --       (4, 'delivered', '2020-01-04', '2020-01-05');
 --commit;
+#}
 
 
 
