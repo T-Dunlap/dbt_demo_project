@@ -18,6 +18,10 @@ select * from tdunlap_sandbox_dev.{{target.schema}}.mock_orders
 {% endsnapshot %}
 
 
+--select * from tdunlap_sandbox_dev.dbt_tdunlap.mock_orders;
+--dbt snapshot;
+--select * from tdunlap_sandbox_dev.dbt_tdunlap_snapshot.mock_orders order by order_id;
+
 --create or replace transient table tdunlap_sandbox_dev.dbt_tdunlap.mock_orders (
 --    order_id integer,
 --    status varchar (100),
