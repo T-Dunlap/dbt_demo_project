@@ -1,6 +1,20 @@
 version: 2
 
 models:
+  - name: my_first_model
+    description: demo to show what an example model looks like
+    columns:
+      - name: my_favorite_number
+        description: Taylor's favorite number
+         
+  - name: my_second_model
+    description: demo to show what a second model with lineage might looks like
+    columns:
+      - name: my_favorite_number
+        description: Taylor's favorite number
+      - name: my_lucky_number
+        description: Taylor's lucky number
+
   - name: materialization_incremental
     description: demo to show incremental model
     columns:
