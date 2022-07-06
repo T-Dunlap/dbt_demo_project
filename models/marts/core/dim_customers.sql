@@ -29,7 +29,7 @@ final as (
         {# region.region_key as region_key, #}
         region.name as region,
         customer.phone_number,
-        {{cents_to_dollars('customer.account_balance') }} as account_balance,
+        customer.account_balance,
         customer.market_segment
     from
         customer
