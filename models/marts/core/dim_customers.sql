@@ -17,7 +17,6 @@ nation as (
 region as (
 
     select * from {{ ref('stg_tpch_regions') }}
-
 ),
 final as (
     select 
@@ -29,7 +28,7 @@ final as (
         {# region.region_key as region_key, #}
         region.name as region,
         customer.phone_number,
-        customer.account_balance,
+        {{ cents_to_dollars('customer.account_balance') }} as account_balance,
         customer.market_segment
     from
         customer
