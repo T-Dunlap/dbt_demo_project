@@ -10,5 +10,7 @@ HOW DO WE GET THERE?
     4. Merge & Deploy 
 */
 
+
+--Example ref statement
 SELECT * 
 FROM {{ ref('fct_order_items') }}
