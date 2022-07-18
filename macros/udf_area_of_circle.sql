@@ -1,4 +1,3 @@
-{#
 {% macro create_area_of_circle() %}
 
 use database {{target.database}};
@@ -14,4 +13,3 @@ create function {{target.schema}}.area_of_circle(radius float)
   ;
 
 {% endmacro %}
-#}
