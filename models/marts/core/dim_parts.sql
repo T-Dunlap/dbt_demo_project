@@ -14,7 +14,7 @@ final as (
         part_key,
         manufacturer,
         name,
-        brand,
+        brand as brand,
         type,
         size,
         container,
