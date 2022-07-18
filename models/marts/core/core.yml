@@ -36,7 +36,7 @@ models:
         description: primary key of the model
         tests:
           - unique
-          - not_null
+#          - not_null
       - name: manufacturer
         description: manufacturer of the part
       - name: name
