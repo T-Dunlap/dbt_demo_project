@@ -153,6 +153,8 @@ models:
         description: code associated with the order
       - name: ship_priority
         description: numeric representation of the shipping priority, zero being the default
+#      - name: clerk_name
+#        description: id of the clerk
       - name: order_count
         description: count of order
       - name: gross_item_sales_amount
