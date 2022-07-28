@@ -35,7 +35,7 @@ models:
       - name: part_key
         description: primary key of the model
         tests:
-#          - unique
+          - unique
           - not_null
       - name: manufacturer
         description: manufacturer of the part
@@ -74,7 +74,7 @@ models:
         description: '{{ doc("account_balance") }}'
  
   - name: fct_order_items
-#    description: order items fact table
+    description: order items fact table
     columns:
       - name: order_item_key
         description: '{{ doc("order_item_key") }}'
@@ -153,8 +153,8 @@ models:
         description: code associated with the order
       - name: ship_priority
         description: numeric representation of the shipping priority, zero being the default
-#      - name: clerk_name
-#        description: id of the clerk
+      - name: clerk_name
+        description: id of the clerk
       - name: order_count
         description: count of order
       - name: gross_item_sales_amount
