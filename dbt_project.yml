@@ -31,7 +31,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 on-run-start:
   - "alter warehouse transforming set warehouse_size=small;"
   -  '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
-  -  'CALL {{stored_proc__pi()}}();'
+  -  'CALL {{sproc__pi_multiplier()}}(2);' # comment / uncomment this line to run stored procedure called sproc__pi_multiplier
 
 
 on-run-end:
