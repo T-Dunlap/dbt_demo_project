@@ -30,7 +30,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 on-run-start:
   - "alter warehouse transforming set warehouse_size=small;"
-  #-  '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
+  -  '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
+  -  'CALL {{sproc__pi_multiplier()}}(2);' # comment / uncomment this line to run stored procedure called sproc__pi_multiplier
+
 
 on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
@@ -54,6 +56,7 @@ models:
 
     marts:
       core:
+        +required_docs: true
         +required_tests: {"unique|not_null": 2}
         +materialized: table
         +schema: core
