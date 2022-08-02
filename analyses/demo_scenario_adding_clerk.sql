@@ -11,6 +11,3 @@ HOW DO WE GET THERE?
 */
 
 
---Example ref statement
-SELECT * 
-FROM {{ ref('fct_order_items') }}
