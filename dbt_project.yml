@@ -32,6 +32,7 @@ on-run-start:
   - "alter warehouse transforming set warehouse_size=small;"
   -  '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
   -  'CALL {{sproc__pi_multiplier()}}(2);' # comment / uncomment this line to run stored procedure called sproc__pi_multiplier
+ # -  'CALL tdunlap_sandbox_dev.dbt_tdunlap.SPROC_PI_MULTIPLIER(3);' # Can also call an existing sproc by explicitly naming it here
 
 
 on-run-end:
