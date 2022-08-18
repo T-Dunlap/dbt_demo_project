@@ -55,7 +55,7 @@ models:
 
     marts:
       core:
-        # +required_docs: true #Uncomment to require docs 
+        # +required_docs: 'true' #Uncomment to require docs 
         +required_tests: {"unique|not_null": 2}
         +materialized: table
         +schema: core
