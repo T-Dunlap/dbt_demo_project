@@ -43,6 +43,8 @@ sources:
             description: '{{ doc("comment") }}'
           
       - name: customer
+        meta:
+          contains_pii: true
         description: main customer table
         columns:
           - name: c_custkey
