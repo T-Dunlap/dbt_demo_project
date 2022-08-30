@@ -16,7 +16,7 @@ jobs:
       DBT_JOB_CAUSE:           'Github Actions - Push to Main' # provide a descriptive job cause here for easy debugging down the road
       DBT_ACCOUNT_ID:          66543
       DBT_PROJECT_ID:          106453 
-      DBT_PR_JOB_ID:           94402 
+      DBT_PR_JOB_ID:           123023 
 
     steps:
     - uses: actions/checkout@v2
