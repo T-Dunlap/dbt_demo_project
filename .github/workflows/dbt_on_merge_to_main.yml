@@ -3,7 +3,7 @@ name: dbt Production Run on Push to Main
 on: 
   push:
     branches: 
-      - production
+      - main
 
 jobs:
   run_dbt_on_merge_to_main:
