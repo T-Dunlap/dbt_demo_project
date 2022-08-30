@@ -36,18 +36,27 @@ on-run-start:
 on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
   - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
-
+  - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
 
 vars:
   start_date: '1999-01-01'
   test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
   fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing
+  #dbt_artifacts:
+    #dbt_artifacts_database: your_db # optional, default is your target database
+    #dbt_artifacts_schema: your_schema # optional, default is 'dbt_artifacts'
+    #dbt_artifacts_table: your_table # optional, default is 'artifacts'
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 models:
-  
+
+  dbt_artifacts:
+    +schema: dbt_artifacts
+    staging:
+      +schema: stg_dbt_artifacts
+      
   tpch:
     staging:
       +materialized: view
