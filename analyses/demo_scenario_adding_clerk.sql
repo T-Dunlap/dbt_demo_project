@@ -6,7 +6,7 @@ ACTION: We need to add the "clerk name" field to the dataset that fuels the dash
 HOW DO WE GET THERE? 
     1. Identify where to make the change 
     2. Implement the change in Dev
-    3. Test & Document 
+    3. Test & Document  
     4. Merge & Deploy 
 */
 
