@@ -1,5 +1,7 @@
 {% macro sproc__pi_multiplier() %}
 
+{#This sproc is called/run in the project.yml file#}
+
     {% set stored_proc_name %}
         {{target.database}}.{{target.schema}}.sproc_pi_multiplier
     {% endset %}

@@ -1,7 +1,7 @@
 /* Create a pivot table with dynamic columns based on the ship modes that are in the system */
 
 {%- call statement('result', fetch_result=True) -%}
-
+ 
     {# this pulls the unique ship modes from the fct_order_items table #}
     select ship_mode from {{ ref('fct_order_items') }} group by 1 
 
