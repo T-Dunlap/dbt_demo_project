@@ -30,21 +30,21 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 on-run-start:
   - "alter warehouse transforming set warehouse_size=small;"
-  #-  '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
+  -  '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
   #-  'CALL {{sproc__pi_multiplier()}}(2);' # comment / uncomment this line to run stored procedure called sproc__pi_multiplier -- can also call the sproc out explictly if it does not exist as a macro. CALL tdunlap_sandbox_dev.dbt_tdunlap.SPROC_PI_MULTIPLIER(3);' 
 
 on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
   - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
-  #- "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
+  - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
 
 vars:
   start_date: '1999-01-01'
   test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
   fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing
-  #dbt_artifacts:
-    #dbt_artifacts_database: your_db # optional, default is your target database
-    #dbt_artifacts_schema: dbt_artifacts # optional, default is 'dbt_artifacts'
+  dbt_artifacts:
+    dbt_artifacts_database: TDUNLAP_SANDBOX_DBT_ARTIFACTS # optional, default is your target database
+    dbt_artifacts_schema: dbt_artifacts # optional, default is 'dbt_artifacts'
     #dbt_artifacts_table: your_table # optional, default is 'artifacts'
 
 # Configuring models
@@ -52,10 +52,10 @@ vars:
 
 models:
 
-  #dbt_artifacts:
-    #+schema: dbt_artifacts
-    #staging:
-      #+schema: dbt_artifacts
+  dbt_artifacts:
+    +schema: dbt_artifacts
+    staging:
+      +schema: stg_dbt_artifacts
       
   tpch:
     staging:
