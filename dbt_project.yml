@@ -55,7 +55,7 @@ vars:
 models:
 
   dbt_artifacts:
-    +schema: dbt_artifacts
+    +schema: dbt_artifacts 
     +database: TDUNLAP_SANDBOX_DBT_ARTIFACTS
     staging:
       +schema: stg_dbt_artifacts
