@@ -1,0 +1,11 @@
+version: 2
+
+
+sources:
+  - name: mock_orders_source
+    description: The source for orders that gets updated/overwritten when order status changes. 
+    database: tdunlap_sandbox_dev
+    schema: dbt_tdunlap
+    tables:
+      - name: mock_orders
+        description: Raw table from which we'll take the snapshots.
