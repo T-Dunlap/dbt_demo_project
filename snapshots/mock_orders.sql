@@ -1,21 +1,16 @@
-{% snapshot mock_orders %}
-
-{% set new_schema = target.schema + '_snapshot' %}
+{% snapshot mock_orders_snapshot %}
 
 {{
     config(
-      target_database='tdunlap_sandbox_dev',
-      target_schema=new_schema,
+      target_database= target.database,
+      target_schema=target.schema,
       unique_key='order_id',
-
       strategy='timestamp',
       updated_at='updated_at',
     )
 }}
 
 select * from {{ source('mock_orders_source', 'mock_orders') }}
---select * from tdunlap_sandbox_dev.{{target.schema}}.mock_orders
-
 
 {% endsnapshot %}
 
@@ -23,7 +18,7 @@ select * from {{ source('mock_orders_source', 'mock_orders') }}
 
 --STEP 1: Drop existing tables and create net new table on tdunlap_sandbox_dev
       drop table tdunlap_sandbox_dev.dbt_tdunlap.mock_orders;
-      drop table tdunlap_sandbox_dev.dbt_tdunlap_snapshot.mock_orders;
+      drop table tdunlap_sandbox_dev.dbt_tdunlap.mock_orders_snapshot;
 
       create or replace transient table tdunlap_sandbox_dev.dbt_tdunlap.mock_orders (
           order_id integer,
@@ -45,7 +40,7 @@ select * from {{ source('mock_orders_source', 'mock_orders') }}
 --STEP 3: Run dbt Snapshot for the first time and create the "_snapshot" table for the first time
       select * from tdunlap_sandbox_dev.dbt_tdunlap.mock_orders;
       --dbt snapshot;
-      select * from tdunlap_sandbox_dev.dbt_tdunlap_snapshot.mock_orders order by order_id;
+      select * from tdunlap_sandbox_dev.dbt_tdunlap.mock_orders_snapshot order by order_id;
 
 
 --STEP 4: Update values from table
@@ -59,10 +54,9 @@ select * from {{ source('mock_orders_source', 'mock_orders') }}
 --STEP 5: Run dbt Snapshot for the second time and view updated snapshot table
       select * from tdunlap_sandbox_dev.dbt_tdunlap.mock_orders;
       --dbt snapshot;
-      select * from tdunlap_sandbox_dev.dbt_tdunlap_snapshot.mock_orders order by order_id;
+      select * from tdunlap_sandbox_dev.dbt_tdunlap.mock_orders_snapshot order by order_id;
 
 */
-
 
 
 
