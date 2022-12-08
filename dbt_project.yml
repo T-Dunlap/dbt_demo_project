@@ -29,12 +29,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 
 on-run-start:
-  - "alter warehouse transforming set warehouse_size=small;"
+  - "alter warehouse transforming set warehouse_size={{env_var('DBT_SNOWFLAKE_WAREHOUSE_SIZE')}};"
   -  '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
   #-  'CALL {{sproc__pi_multiplier()}}(2);' # comment / uncomment this line to run stored procedure called sproc__pi_multiplier -- can also call the sproc out explictly if it does not exist as a macro. CALL tdunlap_sandbox_dev.dbt_tdunlap.SPROC_PI_MULTIPLIER(3);' 
 
 on-run-end:
-  - "alter warehouse transforming set warehouse_size=xsmall;"
+  - "alter warehouse transforming set warehouse_size={{env_var('DBT_SNOWFLAKE_WAREHOUSE_SIZE','xsmall')}};"
   #- "{{ grant_all_on_schemas(schemas, 'transformer') }}"
   #- "{% if 'DBT_ARTIFACTS' in target.schema.upper() %}{{ grant_all_on_schemas(schemas, 'transformer') }}{% endif %}"
   #- "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
