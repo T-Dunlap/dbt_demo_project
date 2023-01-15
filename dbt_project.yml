@@ -38,7 +38,7 @@ on-run-end:
   #- "{{ grant_all_on_schemas(schemas, 'transformer') }}"
   #- "{% if 'DBT_ARTIFACTS' in target.schema.upper() %}{{ grant_all_on_schemas(schemas, 'transformer') }}{% endif %}"
   #- "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
-  - "{{ dbt_artifacts.upload_results(results) }}"
+  #- "{{ dbt_artifacts.upload_results(results) }}"
 
 vars:
   start_date: '1999-01-01'
