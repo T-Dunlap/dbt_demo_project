@@ -13,12 +13,3 @@ models:
     columns:
       - name: order_year
         description: year of the order
-
-  - name: agg_customer_ltv
-    description: customer lifetime value for tableau dashboard
-    columns:
-      - name: customer_key
-        tests: 
-          - not_null
-          - unique
-        
