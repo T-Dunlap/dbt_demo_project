@@ -11,6 +11,7 @@ select
 from {{ source('pivot', 'pivot_orders_source') }}
 group by id 
 
+--select * from {{ source('pivot', 'pivot_orders_source') }}
 
 /*
 --STEP 1: Drop existing tables and create net new table on tdunlap_sandbox_dev
