@@ -2,10 +2,12 @@ version: 2
 
 
 sources:
-  - name: mock_orders_source
+  - name: snap_orders_source
     description: The source for orders that gets updated/overwritten when order status changes. 
     database: tdunlap_sandbox_dev
     schema: dbt_tdunlap
     tables:
-      - name: mock_orders
-        description: Raw table from which we'll take the snapshots.
+      - name: snap_orders_timestamp
+        description: Raw table from which we'll take the snapshots using the timestamp method.
+      - name: snap_orders_custom
+        description: Raw table from which we'll take the snapshots using the custom method.

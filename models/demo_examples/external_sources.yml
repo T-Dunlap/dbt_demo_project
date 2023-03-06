@@ -31,6 +31,14 @@
 version: 2
 
 sources:
+  - name: pivot
+    description: The source for orders that's highly normalized. 
+    database: tdunlap_sandbox_dev
+    schema: dbt_tdunlap
+    tables:
+      - name: pivot_orders_source
+        description: main order tracking table in normalized form
+        
   - name: deutsche_boerse
     description: This is an example of using external sources
     database: analytics
