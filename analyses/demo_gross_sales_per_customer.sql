@@ -2,7 +2,7 @@
 
 ----- SCENARIO -----------------------------------------
 
-I need to create a report that shows the top customers by spend amount. 
+I need to create a dataset that shows the top customers by order spend amount. 
 
 ----- STEPS TO REPRODUCE -------------------------------
 
