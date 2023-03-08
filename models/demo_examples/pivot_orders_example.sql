@@ -23,7 +23,7 @@ group by id
       create or replace transient table tdunlap_sandbox_dev.dbt_tdunlap.pivot_orders_source (
           id integer,
           name varchar (100),
-          value varchar (100)
+          value varchar (100) 
       );
 
 

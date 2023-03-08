@@ -1,4 +1,4 @@
-{% snapshot snap_orders_custom_type2 %}
+{% snapshot scd_orders_custom %}
 
 {{
     config(
@@ -7,7 +7,7 @@
       unique_key='order_id',
       strategy= 'check',
       check_cols=['status', 'shipment_delayed_flag'],
-      invalidate_hard_deletes=True,
+      invalidate_hard_deletes=true,
     )
 }}
 
