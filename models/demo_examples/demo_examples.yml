@@ -33,4 +33,12 @@ models:
 
   - name: get_area_of_circle
     description: demo to show udfs
-        
+
+sources:
+  - name: example
+    description: Example of what a freshness
+    database: tdunlap_sandbox_dev
+    schema: dbt_tdunlap
+    tables:
+      - name: orders_custom_materialization
+        description: example table showing source freshness capabilities
