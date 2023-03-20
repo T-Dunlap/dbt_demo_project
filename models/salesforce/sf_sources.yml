@@ -1,0 +1,74 @@
+version: 2
+
+
+sources:
+  - name: salesforce
+    description: Salesforce tables for use in the 
+    database: salesforce_sources
+    schema: raw
+    tables:
+      - name: sf_orders
+        description: main order tracking table
+        freshness: # make this a warning as this is static data
+          warn_after: {count: 6, period: hour}
+          # error_after: {count: 12, period: hour}
+        loaded_at_field: o_orderdate::timestamp
+
+        columns:
+          - name: o_orderkey
+            description: SF*1,500,000 are sparsely populated
+            tests: 
+              - unique
+              - not_null       
+          - name: o_custkey
+            description: Foreign Key to C_CUSTKEY
+          - name: o_orderstatus
+            description: status code of the order
+          - name: o_totalprice
+            description: raw price
+          - name: o_orderdate
+            description: date the order was made
+          - name: o_orderpriority
+            description: code associated with the order
+          - name: o_clerk
+            description: id of the clerk
+          - name: o_shippriority
+            description: numeric representation of the shipping priority, zero being the default
+          - name: o_comment
+            description: '{{ doc("comment") }}'
+
+      - name: sf_order_items
+        description: main lineitem table
+        columns:
+          - name: l_orderkey
+            description: Foreign Key to O_ORDERKEY
+          - name: l_partkey
+            description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
+          - name: l_suppkey
+            description: Foreign key to S_SUPPKEY, second part of the compound Foreign Key to (PS_PARTKEY, PS_SUPPKEY) with L_PARTKEY
+          - name: l_linenumber
+            description: sequence of the order items within the order
+          - name: l_quantity
+            description: total units
+          - name: l_extendedprice
+            description: line item price
+          - name: l_discount
+            description: percentage of the discount
+          - name: l_tax
+            description: tax rate of the order item
+          - name: l_returnflag
+            description: letter determining the status of the return
+          - name: l_linestatus
+            description: status code of the order item
+          - name: l_shipdate
+            description: the date the order item is being shipped
+          - name: l_commitdate
+            description: the date the order item is being commited
+          - name: l_receiptdate
+            description: the receipt date of the order item
+          - name: l_shipinstruct
+            description: additional instructions on the shipment
+          - name: l_shipmode
+            description: method of shipping
+          - name: l_comment
+            description: '{{ doc("comment") }}'
