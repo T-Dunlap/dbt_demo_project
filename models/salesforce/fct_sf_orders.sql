@@ -40,7 +40,7 @@ final as (
         orders.ship_priority,
         orders.clerk_name,  
         1 as order_count,
-        {{ cents_to_dollars('orders.total_price') }} as total_price,                
+        {{ cents_to_dollars('orders.total_price') }} as total_price,                 
         order_item_summary.gross_item_sales_amount,
         order_item_summary.item_discount_amount,
         order_item_summary.item_tax_amount,
