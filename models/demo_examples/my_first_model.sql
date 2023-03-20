@@ -4,4 +4,4 @@
     )
 }}
 
-select 55 as my_favorite_number
+select 55 as my_favorite_number 
