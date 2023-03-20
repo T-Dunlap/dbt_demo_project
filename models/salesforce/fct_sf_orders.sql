@@ -38,7 +38,7 @@ final as (
         orders.status_code,
         orders.priority_code,
         orders.ship_priority,
-        orders.clerk_name,  
+        orders.clerk_name,   
         1 as order_count,
         {{ cents_to_dollars('orders.total_price') }} as total_price,                 
         order_item_summary.gross_item_sales_amount,
