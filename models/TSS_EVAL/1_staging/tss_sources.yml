@@ -1,0 +1,31 @@
+version: 2
+
+
+sources:
+  - name: opal_salesforce
+    description: data source description
+    database: OPAL
+    schema: SALESFORCE
+    tables:
+      - name: CUSTOMER_DEPLOYMENT__C
+      - name: CUSTOMER_ASSET__C
+      - name: PRODUCT2
+      - name: ACCOUNT
+
+  - name: opal_salesforce_base
+    description: data source description
+    database: OPAL
+    schema: ODS_FT_SALESFORCE_P1_BASE
+    tables:
+      - name: CUSTOMER_DEPLOYMENT_C
+
+  - name: edw_opal_ods
+    description: data source description
+    database: EDW_PRD_ORG62_OPAL
+    schema: ODS
+    tables:
+      - name: ORDERITEM_SV
+      - name: TENANT_SV
+      - name: ORDER_SV
+      - name: CONTRACT_SV
+      - name: ACCOUNT_SV
