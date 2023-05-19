@@ -62,3 +62,34 @@ exposures:
     # IMPORTANT: determines the lineage relationship of the exposure construct to the rest of your DAG
     depends_on:
       - ref('fct_orders')
+
+  - name: thoughtspot_revenue_dashboard
+    description: |
+      # Dashboard showing the details of Revenue in ThoughtSpot. 
+      ============
+
+      Target Audience: Members of Finance and Fulfillment Operations
+
+      2nd paragraph. *Italic*, **bold**, and `monospace`
+      Itemized lists look like:
+        * this one
+        * that one
+        * the other one
+    
+    # type could be {dashboard, notebook, analysis, ml, application}
+    type: dashboard 
+    
+    # this is just a link to the thing itself for click through from documentation
+    url: https://example.com
+    
+    # convenience feature - relative scale of {high, medium, low}
+    maturity: high
+    
+    # documentation purposes for point of contact if stuff breaks
+    owner:
+      name: Susan Dashboarder
+      email: susan.dashboarder@getdbt.com
+    
+    # IMPORTANT: determines the lineage relationship of the exposure construct to the rest of your DAG
+    depends_on:
+      - ref('curated_revenue_table')
