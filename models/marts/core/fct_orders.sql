@@ -33,7 +33,7 @@ final as (
 
         orders.order_key, 
         orders.order_date,
-        orders.customer_key,
+        orders.customer_key ,
         orders.status_code,
         orders.priority_code,
         orders.ship_priority,
