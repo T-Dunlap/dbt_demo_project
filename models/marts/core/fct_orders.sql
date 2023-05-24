@@ -19,7 +19,7 @@ order_item_summary as (
 
     select 
         order_key,
-        sum(gross_item_sales_amount) as gross_item_sales_amount,
+        sum(gross_item_sales_amount) as gross_item_sales_amount  ,
         sum(item_discount_amount) as item_discount_amount,
         sum(item_tax_amount) as item_tax_amount,
         sum(net_item_sales_amount) as net_item_sales_amount
@@ -33,7 +33,7 @@ final as (
 
         orders.order_key, 
         orders.order_date,
-        orders.customer_key,
+        orders.customer_key ,
         orders.status_code,
         orders.priority_code,
         orders.ship_priority,
