@@ -5,6 +5,7 @@
     )
 }}
 
+
 with orders as (
     
     select * from {{ ref('stg_tpch_orders') }} 
@@ -43,7 +44,8 @@ final as (
         order_item_summary.gross_item_sales_amount,
         order_item_summary.item_discount_amount,
         order_item_summary.item_tax_amount,
-        order_item_summary.net_item_sales_amount
+        order_item_summary.net_item_sales_amount,
+        'test column' as testcolumn
     from
         orders
         inner join order_item_summary
