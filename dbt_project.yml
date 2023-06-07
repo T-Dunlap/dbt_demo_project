@@ -44,10 +44,10 @@ vars:
   start_date: '1999-01-01'
   test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
   fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing
-  dbt_artifacts:
-    dbt_artifacts_database: TDUNLAP_SANDBOX_DBT_ARTIFACTS # optional, default is your target database
-    dbt_artifacts_schema: raw_dbt_artifacts # optional, default is 'dbt_artifacts'
-    dbt_artifacts_create_schema: true # optional, true|false set to false if you don't have privileges to create schema, default is true
+  # dbt_artifacts:
+  #   #dbt_artifacts_database: TDUNLAP_SANDBOX_DBT_ARTIFACTS # optional, default is your target database
+  #   dbt_artifacts_schema: raw_dbt_artifacts # optional, default is 'dbt_artifacts'
+  #   dbt_artifacts_create_schema: true # optional, true|false set to false if you don't have privileges to create schema, default is true
 
 
 # Configuring models
@@ -55,11 +55,10 @@ vars:
 
 models:
 
-  dbt_artifacts:
-    +schema: dbt_artifacts 
-    +database: TDUNLAP_SANDBOX_DBT_ARTIFACTS
-    staging:
-      +schema: stg_dbt_artifacts
+  # dbt_artifacts:
+  #   +schema: dbt_artifacts 
+  #   staging:
+  #     +schema: stg_dbt_artifacts
       
   tpch:
     staging:
