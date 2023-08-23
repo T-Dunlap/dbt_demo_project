@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='table'
-        ,post_hook="Select * from foobar"
-    )
-}}
-
 with source as (
 
     select * from {{ source('tpch', 'customer') }}
