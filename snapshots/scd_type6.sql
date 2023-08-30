@@ -9,7 +9,7 @@
                 unique_key='id', 
                 update_cols=['name','phone'],
                 only_update_most_recent_record=false
-            ) }}"]
+            ) }}"] 
     ) }}
     
 
