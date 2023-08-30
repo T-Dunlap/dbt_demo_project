@@ -16,7 +16,7 @@
     select * 
         ,null as current_name
         ,null as current_phone
-    from {{ ref('scd_source') }}
+    from {{ ref('scd_source') }} 
 
     
 {% endsnapshot %}

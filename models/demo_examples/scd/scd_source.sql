@@ -7,4 +7,4 @@ with source_data as (
     select 7 as id, 'Alfie Solomon' as name, 8080809800 as phone, 'austin' as city, 'stationary' as item 
 )
 
-select * from source_data
+select * from source_data 

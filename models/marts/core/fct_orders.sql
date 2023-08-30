@@ -31,7 +31,7 @@ order_item_summary as (
 final as (
 
     select 
-
+        {{ dbt_utils.surrogate_key(['orders.order_key', 'orders.order_date','orders.customer_key']) }} as order_sk,
         orders.order_key, 
         orders.order_date,
         orders.customer_key,
