@@ -16,7 +16,7 @@ final as (
         name,
         brand as brand,
         type,
-        size,
+        size, 
         container,
         retail_price
     from
