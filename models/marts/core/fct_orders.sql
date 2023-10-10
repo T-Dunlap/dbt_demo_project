@@ -4,7 +4,6 @@
         tags=['finance']
     )
 }}
- 
 
 with orders as (
     
@@ -31,14 +30,14 @@ order_item_summary as (
 final as (
 
     select 
-
+        {{ dbt_utils.surrogate_key(['orders.order_key', 'orders.order_date','orders.customer_key']) }} as order_sk,
         orders.order_key, 
         orders.order_date,
-        orders.customer_key,
+        orders.customer_keyz,
         orders.status_code,
         orders.priority_code,
         orders.ship_priority,
-        --orders.clerk_name,  --10/21/2022 KJ: Commenting out as it's not needed. 
+        orders.clerk_name,  --10/21/2022 KJ: Commenting out as it's not needed. 
         1 as order_count,                
         order_item_summary.gross_item_sales_amount,
         order_item_summary.item_discount_amount,
