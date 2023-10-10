@@ -33,7 +33,7 @@ final as (
         {{ dbt_utils.surrogate_key(['orders.order_key', 'orders.order_date','orders.customer_key']) }} as order_sk,
         orders.order_key, 
         orders.order_date,
-        orders.customer_keyz,
+        orders.customer_key,
         orders.status_code,
         orders.priority_code,
         orders.ship_priority,
