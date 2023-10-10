@@ -1,5 +1,5 @@
 
-{% macro update_valid_snapshot_records(from_relation='', unique_key='', prefix='current', update_cols=[], only_update_most_recent_record=true) %}
+{% macro update_valid_snapshot_records(from_relation='', unique_key='', prefix='', update_cols=[], only_update_most_recent_record=true) %}
 
     {% call statement() %}
     create or replace view {{ this }}__dbt_tmp as
@@ -19,7 +19,7 @@
         {%- endif %}
     when matched then update set
         {%- for column in update_cols %}
-        DBT_INTERNAL_DEST.{{ prefix}}_{{ column }} = DBT_INTERNAL_SOURCE.{{ column }}{% if not loop.last %},{% endif %}
+        DBT_INTERNAL_DEST.{{ prefix}}{{ column }} = DBT_INTERNAL_SOURCE.{{ column }}{% if not loop.last %},{% endif %}
         {%- endfor %}
     ;
     {% endcall %}
