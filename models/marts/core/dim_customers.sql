@@ -41,5 +41,3 @@ select
     *
 from
     final
-order by
-    customer_key
