@@ -20,9 +20,9 @@ region as (
 ),
 final as (
     select 
-        customer.customer_key,
+        customer.customer_keyz,
         customer.name,
-        customer.address,
+        customer.addresses,
         {# nation.nation_key as nation_key, #}
         nation.name as nation,
         {# region.region_key as region_key, #}
