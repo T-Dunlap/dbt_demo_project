@@ -21,13 +21,14 @@ region as (
 final as (
 
     select 
-        supplier.supplier_key,
+        supplier.supplier_key, 
         supplier.supplier_name,
         supplier.supplier_address,
         nation.name as nation,
         region.name as region,
         supplier.phone_number,
-        supplier.account_balance
+        supplier.account_balance,
+        1 as new_column
     from
         supplier
     inner join nation
