@@ -9,6 +9,10 @@ with part as (
 
 ),
 
+orders as (
+    select * from {{ ref('ephemeral_table') }}
+),
+
 final as (
     select 
         part_key,

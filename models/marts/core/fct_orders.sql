@@ -36,6 +36,7 @@ final as (
         orders.customer_key,
         orders.status_code,
         orders.priority_code,
+        --case when orders.priority_code = '1-URGENT' then '1-EMERGENCY' else orders.priority_code end as priority_code,
         orders.ship_priority,
         orders.clerk_name,  --10/21/2022 KJ: Commenting out as it's not needed. 
         1 as order_count,                

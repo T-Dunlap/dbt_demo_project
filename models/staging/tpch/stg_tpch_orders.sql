@@ -13,7 +13,8 @@ renamed as (
         o_orderstatus as status_code,
         o_totalprice as total_price,
         o_orderdate as order_date,
-        o_orderpriority as priority_code,
+        --o_orderpriority as priority_code,
+        case when o_orderpriority = '1-URGENT' then '1-EMERGENCY' else o_orderpriority end as priority_code,
         o_clerk as clerk_name,
         o_shippriority as ship_priority,
         o_comment as comment
