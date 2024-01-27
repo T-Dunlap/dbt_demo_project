@@ -1,7 +1,7 @@
-{% macro get_warehouse2() %}
+{% macro get_warehouse2(transforming) %}
 {% if target.name in ('ci') %}
-    'transforming'
+    xyz
 {% else %}
-    'xyz'
+    transforming
 {% endif %}
 {% endmacro %}
