@@ -27,8 +27,7 @@ final as (
         nation.name as nation,
         region.name as region,
         supplier.phone_number,
-        supplier.account_balance,
-        1 as new_column
+        supplier.account_balance
     from
         supplier
     inner join nation
