@@ -1,7 +1,7 @@
 {{
     config(
         materialized = 'table'
-        ,snowflake_warehouse=get_warehouse('transforming', 'wh2')
+        ,snowflake_warehouse=get_warehouse('transforming','wh2')
     )
 }}
 with part as (
