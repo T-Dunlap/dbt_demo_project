@@ -7,9 +7,12 @@
           unique_key="workday_unique_sk",
           updated_at='SYSTEMMODTIMESTAMP',
           check_cols=["CHECKSUM_COLUMN"],
-          invalidate_hard_deletes=True
+          invalidate_hard_deletes=True,
+          post_hook=generate_audit_column(unique_key='workday_unique_sk')
         )
 }}
+
+with data as (
 
 {% if var('initial_delete', False) %}
 select 'PID-2015' as workday_unique_sk, 1  as CHECKSUM_COLUMN, '2024-01-19 05:25:47.000' as SYSTEMMODTIMESTAMP union all
@@ -46,5 +49,8 @@ select 'PID-2022' as workday_unique_sk, 8  as CHECKSUM_COLUMN, '2024-01-19 10:07
 select 'PID-2023' as workday_unique_sk, 9  as CHECKSUM_COLUMN, '2024-01-19 05:11:22.000' as SYSTEMMODTIMESTAMP union all
 select 'PID-2024' as workday_unique_sk, 10 as CHECKSUM_COLUMN, '2024-01-19 19:02:00.000' as SYSTEMMODTIMESTAMP 
 {% endif %}
+)
+
+select *, 'Active'::varchar(50) as status_audit from data
 
 {% endsnapshot %}
