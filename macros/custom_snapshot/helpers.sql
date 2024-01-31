@@ -1,6 +1,40 @@
+{#
+    Add new columns to the table if applicable
+#}
+{% macro create_columns(relation, columns) %}
+  {{ adapter.dispatch('create_columns', 'dbt')(relation, columns) }}
+{% endmacro %}
 
+{% macro default__create_columns(relation, columns) %}
+  {% for column in columns %}
+    {% call statement() %}
+      alter table {{ relation }} add column "{{ column.name }}" {{ column.data_type }};
+    {% endcall %}
+  {% endfor %}
+{% endmacro %}
+
+
+{% macro post_snapshot(staging_relation) %}
+  {{ adapter.dispatch('post_snapshot', 'dbt')(staging_relation) }}
+{% endmacro %}
+
+{% macro default__post_snapshot(staging_relation) %}
+    {# no-op #}
+{% endmacro %}
+
+{% macro get_true_sql() %}
+  {{ adapter.dispatch('get_true_sql', 'dbt')() }}
+{% endmacro %}
+
+{% macro default__get_true_sql() %}
+    {{ return('TRUE') }}
+{% endmacro %}
 
 {% macro snapshot_staging_table(strategy, source_sql, target_relation) -%}
+  {{ adapter.dispatch('snapshot_staging_table', 'dbt')(strategy, source_sql, target_relation) }}
+{% endmacro %}
+
+{% macro default__snapshot_staging_table(strategy, source_sql, target_relation) -%}
 
     with snapshot_query as (
 
@@ -114,3 +148,34 @@
     {%- endif %}
 
 {%- endmacro %}
+
+
+{% macro build_snapshot_table(strategy, sql) -%}
+  {{ adapter.dispatch('build_snapshot_table', 'dbt')(strategy, sql) }}
+{% endmacro %}
+
+{% macro default__build_snapshot_table(strategy, sql) %}
+
+    select *,
+        {{ strategy.scd_id }} as dbt_scd_id,
+        {{ strategy.updated_at }} as dbt_updated_at,
+        {{ strategy.updated_at }} as dbt_valid_from,
+        nullif({{ strategy.updated_at }}, {{ strategy.updated_at }}) as dbt_valid_to
+    from (
+        {{ sql }}
+    ) sbq
+
+{% endmacro %}
+
+
+{% macro build_snapshot_staging_table(strategy, sql, target_relation) %}
+    {% set temp_relation = make_temp_relation(target_relation) %}
+
+    {% set select = snapshot_staging_table(strategy, sql, target_relation) %}
+
+    {% call statement('build_snapshot_staging_relation') %}
+        {{ create_table_as(True, temp_relation, select) }}
+    {% endcall %}
+
+    {% do return(temp_relation) %}
+{% endmacro %}
