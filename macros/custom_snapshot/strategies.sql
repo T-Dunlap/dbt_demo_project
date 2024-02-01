@@ -138,6 +138,7 @@
     {% set primary_key = config['unique_key'] %}
     {% set invalidate_hard_deletes = config.get('invalidate_hard_deletes', false) %}
     {% set updated_at = config.get('updated_at', snapshot_get_time()) %}
+    {% set delete_override_timestamp = config.get('delete_override_timestamp', snapshot_get_time()) %}
 
     {% set column_added = false %}
 
@@ -169,6 +170,7 @@
         "updated_at": updated_at,
         "row_changed": row_changed_expr,
         "scd_id": scd_id_expr,
-        "invalidate_hard_deletes": invalidate_hard_deletes
+        "invalidate_hard_deletes": invalidate_hard_deletes,
+        "delete_override_timestamp": delete_override_timestamp
     }) %}
 {% endmacro %}
