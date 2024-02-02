@@ -132,7 +132,8 @@
             {{ snapshot_get_time() }} as dbt_updated_at,
             --{{ snapshot_get_time() }} as dbt_valid_to,
             --snapshotted_data.{{ strategy.updated_at }} as dbt_valid_to,
-            '{{ strategy.delete_override_timestamp }}' as dbt_valid_to,     
+            --'{{ strategy.delete_override_timestamp }}' as dbt_valid_to,     
+            '{{ var("delete_override_timestamp") }}'::date as dbt_valid_to,
             snapshotted_data.dbt_scd_id
 
         from snapshotted_data
