@@ -2,13 +2,19 @@
 
 {{
         config(
-          target_schema='dbt_mwinkler',
+          target_schema='dbt_tdunlap',
           strategy='check',
           unique_key="workday_unique_sk",
           updated_at='SYSTEMMODTIMESTAMP',
           check_cols=["CHECKSUM_COLUMN"],
           invalidate_hard_deletes=True,
-          post_hook=generate_audit_column(unique_key='workday_unique_sk')
+          post_hook=[
+            generate_audit_column(unique_key='workday_unique_sk'),
+            "update {{ this }} 
+            set dbt_valid_to = (select max(SystemModTimestamp) from {{ this }})
+            where dbt_valid_to = (select max(dbt_valid_to) from {{ this }})
+            and DATEDIFF(second, dbt_valid_to, sysdate()) < 60;"
+            ]
         )
 }}
 

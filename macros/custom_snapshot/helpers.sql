@@ -130,7 +130,7 @@
             source_data.*,
             {{ snapshot_get_time() }} as dbt_valid_from,
             {{ snapshot_get_time() }} as dbt_updated_at,
-            snapshotted_data.{{ strategy.updated_at }} as dbt_valid_to,
+            {{ snapshot_get_time() }} as dbt_valid_to,
             snapshotted_data.dbt_scd_id
 
         from snapshotted_data
