@@ -29,7 +29,8 @@ final as (
         region.name as region,
         customer.phone_number,
         customer.account_balance,
-        customer.market_segment
+        customer.market_segment,
+        'test_column' as test_column
     from
         customer
         inner join nation
