@@ -39,34 +39,43 @@ sources:
       - name: pivot_orders_source
         description: main order tracking table in normalized form
         
-  - name: taylor_test_s3
+  - name: seahawks_roster
     description: This is an example of using external sources
-    database: tdunlap_sandbox_dev
-    schema: dbt_tdunlap
+    database: tdunlap_sandbox_sources
+    schema: examples
 
     tables:
-      - name: taylor_test_s3_external_table
+      - name: seahawks_2023_roster
         description: >
-          This is Taylor's test external table
+          This is an example of an external snowflake table that references a csv file in S3. 
 
         external:
-          location: "@taylor_test_s3_location"
+          location: "@seahawks"
           file_format: "(type=csv, field_delimiter=',' skip_header=1)"
           auto_refresh: true
-          pattern:  '.*de_anaplan/{{ (modules.datetime.datetime.now(modules.pytz.utc) + modules.datetime.timedelta(days=-4, hours=0)).strftime("%Y%m%d") }}/.*'
 
         columns:
-          - name: Column1
-            data_type: INT
-            description: "number of the record"
-          - name: Column2
+          - name: Player
             data_type: TEXT
-            description: "letter of the record"
-          - name: File
+            description: "Name of the player"
+          - name: Number
+            data_type: INT
+            description: "Number of the player"
+          - name: Position
+            data_type: Text
+            description: "Position of the player"
+          - name: Status
             data_type: VARCHAR
-            description: "The file name"
-          - name: Date
-            data_type: NUMBER
-            description: "Date in numeric format"
-
-
+            description: "Active Status of the player"
+          - name: Height
+            data_type: INT
+            description: "Height of the player"
+          - name: Weight
+            data_type: INT
+            description: "Active Status of the player"
+          - name: Experience
+            data_type: INT
+            description: "Years of Experience"
+          - name: College
+            data_type: INT
+            description: "College the player last attended"
