@@ -16,8 +16,7 @@ renamed as (
         n_nationkey as nation_key,
         n_name as name,
         n_regionkey as region_key,
-        n_comment as comment,
-        '{{env_var('DBT_ENV_TYPE')}}' as env_type
+        n_comment as comment
 
     from source
 
